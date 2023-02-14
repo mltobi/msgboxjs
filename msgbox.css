@@ -1,0 +1,116 @@
+.msgbox {
+    position: fixed;
+    display: none;
+    width: 500px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    z-index: 2;
+    cursor: default;
+}
+
+.msgbox-button {
+    position: absolute;
+    display: block;
+    border-radius: 10px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.msgbox-button-ok-yes {
+    width: 80px;
+    height: 40px;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.msgbox-button-cancel {
+    width: 80px;
+    height: 40px;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(190, 190, 190, 0.5);
+}
+
+.msgbox-button-no {
+    width: 80px;
+    height: 40px;
+    bottom: 10px;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+    background-color: rgba(190, 190, 190, 0.5);
+}
+
+.msgbox-button:hover {
+    opacity: 0.6;
+}
+
+.msgbox-content-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: white;
+}
+
+.msgbox-button-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 14px;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: white;
+}
+
+.msgbox-title {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 28px;
+    font-weight: bold;
+    background-color: rgba(188, 188, 226, 0.5);
+    user-select: none;
+    border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+    z-index: 2;
+    cursor: default;
+}
+
+.msgbox-title-text{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 16px;
+    color: white;
+}
+
+.msgbox-close-icon {
+    position: absolute;
+    display: block;
+    right: 3px;
+    height: 22px;
+    bottom: 3px;
+    width: 22px;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 255, 255, 0.5);
+    user-select: none;
+    border-radius: 5px;
+    z-index: 2;
+    cursor: default;
+}
+
+.msgbox-close-icon:hover {
+    opacity: 0.6;
+}
