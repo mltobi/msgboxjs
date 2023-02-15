@@ -1,15 +1,18 @@
 
+
 // class to create a message box
 class MsgBox {
 
-    constructor(name, retFunc, width = 500, height = 150, boxtype = "okcancel") {
+    constructor(name, retFunc, width = 500, height = 300, boxtype = "okcancel") {
 
         this.name = name;
         this.retFunc= retFunc;
 
         // add message box style sheet css file
         let elem = document.getElementsByTagName("head")[0];
-        elem.innerHTML = '<link rel="stylesheet" href="msgbox.css">' + elem.innerHTML;
+        if( elem.innerHTML.includes('msgbox.css') == false ) {
+            elem.innerHTML = '<link rel="stylesheet" href="msgbox.css">' + elem.innerHTML;
+        }
 
         // create html code for message box
         let tmp = '';
@@ -42,15 +45,23 @@ class MsgBox {
         tmp = tmp + '    </div>\n';
 
         // add message box to beginning of body element
-        elem = document.getElementsByTagName("body")[0];
-        elem.innerHTML = tmp + elem.innerHTML;
+        elem = document.createElement('div');
+        elem.innerHTML = tmp
+        document.body.appendChild(elem);
 
         // set size of message box
         elem = document.getElementById(this.name);
         elem.style.width = width + 'px';
         elem.style.height = height + 'px';
-    }
 
+        elem = document.getElementById(this.name + '-title');
+        elem.addEventListener('mousedown', function() {MsgBoxMouseDown(name)}, false);
+        
+        elem = document.getElementById(this.name + '-content-text');
+        elem.style.width = (parseInt(width) - 30) + 'px';
+        elem.style.height = (parseInt(height) - 110) + 'px';
+
+    }
 
     // show message box
     show(title, content) {
@@ -70,7 +81,8 @@ class MsgBox {
         elem.innerHTML = title;
 
         // show message box
-        document.getElementById(this.name).style.display = "block";
+        elem = document.getElementById(this.name)
+        elem.style.display = "block";
     }
 
 
@@ -83,4 +95,25 @@ class MsgBox {
         this.retFunc(answer);
     }
 }
+
+
+var MsgBoxName = "";
+window.addEventListener('mouseup', MsgBoxMouseUp, false);
+window.addEventListener('mousemove', MsgBoxMouseMove, true);
+
+function MsgBoxMouseUp() {
+    MsgBoxName = "";
+}
+function MsgBoxMouseDown(name) {
+    MsgBoxName = name;
+}
+function MsgBoxMouseMove(e) {
+    if( MsgBoxName != "" ) {
+        let elem = document.getElementById(MsgBoxName)
+        elem.style.top = e.clientY + 'px';
+        elem.style.left = e.clientX + 'px';
+    }
+};
+
 // EOF
+
